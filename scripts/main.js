@@ -9,11 +9,15 @@ var HomeComponent = require('./components/HomeComponent');
 var AddProductComponent = require('./components/AddProductComponent');
 var LoginComponent = require('./components/LoginComponent');
 var BooksComponent = require('./components/BooksComponent');
+var AddBookForm = require('./components/AddBookForm');
+var BookListComponent = require('./components/BookListComponent');
+var BookDetailsComponent = require('./components/BookDetailsComponent');
 var ElectronicsComponent = require('./components/ElectronicsComponent');
 var ClothingComponent = require('./components/ClothingComponent');
 var RegisterComponent = require('./components/RegisterComponent');
 
-Parse.initialize("NIXnILrrsu8JdvUWbFAsMuM48vsb1Qh3iCPyeahc", "jl3vfE6GQ3vJTonhw6UnQHh5G3Y48rnXSAULetGA");
+Parse.initialize("zkpvLjWqCoKUUjxsYuASZLCHb0UqvYoQ2Z4lIsh2", "7Ez4PB8ZfZKUeCs8QY1pTD5T8cs4QT4nXpG4nF9B");
+
 
 
 var app = document.getElementById('app');
@@ -36,6 +40,29 @@ var Router = Backbone.Router.extend({
 	},
 	books: function() {
 		React.render(<BooksComponent />, app);
+		addBooks: function() {
+		if(!Parse.User.current()) {
+			this.navigate('login', {trigger: true});
+		}
+		else {
+			React.render(
+				<AddBookForm />,
+				app
+			);
+		}
+	},
+	listPets: function() {
+		React.render(
+			<ListPetsComponent />,
+			app
+		);
+	},
+	petDetails: function(id) {
+		React.render(
+			<PetDetailsComponent petId={id} />,
+			app
+		);
+	},
 	},
 	electronics: function() {
 		React.render(<ElectronicsComponent />, app);

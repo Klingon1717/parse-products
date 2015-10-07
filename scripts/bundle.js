@@ -3480,9 +3480,7 @@ function drainQueue() {
         currentQueue = queue;
         queue = [];
         while (++queueIndex < len) {
-            if (currentQueue) {
-                currentQueue[queueIndex].run();
-            }
+            currentQueue[queueIndex].run();
         }
         queueIndex = -1;
         len = queue.length;
@@ -3534,6 +3532,7 @@ process.binding = function (name) {
     throw new Error('process.binding is not supported');
 };
 
+// TODO(shtylman)
 process.cwd = function () { return '/' };
 process.chdir = function (dir) {
     throw new Error('process.chdir is not supported');
@@ -33075,6 +33074,8 @@ var BooksComponent = require('./components/BooksComponent');
 var ElectronicsComponent = require('./components/ElectronicsComponent');
 var ClothingComponent = require('./components/ClothingComponent');
 var RegisterComponent = require('./components/RegisterComponent');
+
+Parse.initialize("NIXnILrrsu8JdvUWbFAsMuM48vsb1Qh3iCPyeahc", "jl3vfE6GQ3vJTonhw6UnQHh5G3Y48rnXSAULetGA");
 
 var app = document.getElementById('app');
 
