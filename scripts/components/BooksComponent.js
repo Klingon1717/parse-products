@@ -6,6 +6,9 @@ module.exports = React.createClass({
 			<div className="container">
 				<div className="row">
 					<h1>Books</h1>
+					<form onSubmit={this.AddBook}>
+						<div className="leatherBoundBooks">
+						</div>
 				</div>
 			</div>
 		);
