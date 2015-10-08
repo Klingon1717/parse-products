@@ -3,9 +3,11 @@ var ProductModel = require('./ProductModel');
 
 
 module.exports = React.createClass({
-	componentWillMount: function(){
+	componentWillUpdate: function(){
+
+	componentWillReceiveProps: function(nextProps){
 		var query = new Parse.Query(ProductModel);
-		query.equalTo('category', this.props.category.toLowerCase());
+		query.equalTo('category', nextprops.category.toLowerCase());
 		query.find().then((products) => {
 			this.setState({products: products});
 		});
@@ -22,4 +24,7 @@ module.exports = React.createClass({
 				<div className="row">
 					<h1>{this.state.displayCategory}</h1>
 			)
+	},
+	getProuducts: function (){
+
 	}
