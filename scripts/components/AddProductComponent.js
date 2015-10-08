@@ -1,4 +1,6 @@
 var React = require('react');
+var CategoryComponent = require('./CategoryComponent');
+var ProductModel = require('../models/ProductModel');
 
 module.exports = React.createClass({
 	getInitialState: function() {
@@ -53,5 +55,16 @@ module.exports = React.createClass({
 	},
 	onAddProduct: function(e) {
 		e.preventDefault();
+		var newProuduct = new ProductModel({
+			name: this.refs.name.getDOMNode().value,
+			description: this.refs.description.getDOMNode().value,
+			price: this.refs.price.getDOMNode().value,
+			user: Parse.User.current()
+			
+		});
+
+		newProuduct.save();
+	}
+});
 	}
 });

@@ -26,9 +26,7 @@ var Router = Backbone.Router.extend({
 	routes: {
 		'': 'home',
 		'add': 'add',
-		'category/books': 'books',
-		'category/electronics': 'electronics',
-		'category/clothing': 'clothing',
+		'category/:category': 'category',
 		'login': 'login',
 		'register': 'register'
 	},
@@ -38,37 +36,9 @@ var Router = Backbone.Router.extend({
 	add: function() {
 		React.render(<AddProductComponent />, app);
 	},
-	books: function() {
-		React.render(<BooksComponent />, app);
-		addBooks: function() {
-		if(!Parse.User.current()) {
-			this.navigate('login', {trigger: true});
-		}
-		else {
-			React.render(
-				<AddBookForm />,
-				app
-			);
-		}
-	},
-	listPets: function() {
-		React.render(
-			<ListPetsComponent />,
-			app
-		);
-	},
-	petDetails: function(id) {
-		React.render(
-			<PetDetailsComponent petId={id} />,
-			app
-		);
-	},
-	},
-	electronics: function() {
-		React.render(<ElectronicsComponent />, app);
-	},
-	clothing: function() {
-		React.render(<ClothingComponent />, app);
+	category: function(category) {
+		React.render(<CategoryComponent category={category} />, app);
+	
 	},
 	login: function() {
 		React.render(<LoginComponent router={r} />, app);
